@@ -1,0 +1,38 @@
+# Face Recognition Dataset Configuration
+
+# 人脸检测数据集
+detection:
+  train:
+    - name: WiderFace
+      url: http://shannon.cs.ucla.edu/WIDERFace/
+      anno_file: widerface_train_anno.txt
+  val:
+    - name: WiderFace
+      url: http://shannon.cs.ucla.edu/WIDERFace/
+      anno_file: widerface_val_anno.txt
+
+# 人脸识别/特征提取数据集
+recognition:
+  train:
+    - name: CASIA-WebFace
+      url: http://www.cbsr.ia.ac.cn/english/CASIA-WebFace-503995-Images.tar
+      num_identities: 10575
+      num_images: 494414
+    - name: VGGFace2
+      url: https://www.robots.ox.ac.uk/~vgg/data/vgg_face/vggface2_train.tar
+      num_identities: 8631
+      num_images: 3.31M
+  val:
+    - name: LFW
+      url: http://vis-www.cs.umass.edu/lfw/
+      num_pairs: 6000
+
+# 数据增强配置
+augmentation:
+  horizontal_flip: 0.5
+  brightness: 0.2
+  contrast: 0.2
+  saturation: 0.2
+  hue: 0.1
+  random_crop: true
+  color_jitter: true

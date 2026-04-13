@@ -1,0 +1,33 @@
+# linger 量化训练配置文件
+# 用于二维码检测任务的量化训练配置
+
+# 基础量化设置
+open_quant: true
+quant_method: NATIVE
+device: cuda
+dtype: torch.float32
+seed: 42
+calibration: false
+platform: venusA
+
+# 约束配置 (constrain 训练)
+clamp_info:
+  clamp_weight_value: null
+  clamp_bias_value: null
+  clamp_activation_value: 8
+  clamp_factor_value: 7
+
+# 量化信息配置
+quant_info:
+  weight_bits: 8
+  activate_bits: 8
+  bias_bits: 32
+  a_strategy: RANGE_MEAN
+  w_strategy: RANGE_MEAN
+  is_symmetry: true
+  is_perchannel: false
+  round_mode: floor_add
+  activation_type: none
+  qat_method: MOM
+  w_calibrate_name: abs_max
+  a_calibrate_name: top_10

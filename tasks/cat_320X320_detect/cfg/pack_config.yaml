@@ -1,0 +1,43 @@
+# thinker tpacker 打包配置文件
+# 用于模型图转换和打包
+
+# 模型配置
+model:
+  # 输入模型路径 (运行时指定)
+  path: ""
+  # 模型数据类型
+  dtype: float32
+  # 输入布局
+  layout: NCHW
+
+# 设备配置
+device:
+  # 目标平台: venusA, venus, arcs
+  platform: venusA
+  # 设备ID
+  device_id: 0
+
+# 内存配置
+memory:
+  # 内存类型
+  mem_type: SHARED
+  # 预留内存 (MB)
+  reserve_memory: 10
+  # 权重内存 (MB)
+  weight_memory: 100
+
+# 优化选项
+optimize:
+  # 启用图优化
+  enable: true
+  # 算子融合
+  operator_fusion: true
+  # 内存优化
+  memory_opt: true
+
+# 导出配置
+export:
+  # 导出配置文件
+  config_path: ""
+  # 生成内存报告
+  dump_memory: true

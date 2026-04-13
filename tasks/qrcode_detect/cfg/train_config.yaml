@@ -1,0 +1,59 @@
+# QR Code Detection Training Configuration
+
+# Training Configuration
+training:
+  epochs: 50
+  batch_size: 8
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  seed: 42
+
+# Optimizer Configuration
+optimizer:
+  type: AdamW
+  lr: 0.001
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+# Learning Rate Scheduler
+scheduler:
+  type: CosineAnnealingLR
+  T_max: 50
+  eta_min: 1.0e-6
+
+# Image Configuration
+image:
+  input_size: 320  # 保持较小的输入尺寸以满足4M参数限制
+  rgb: true
+  normalize: true
+
+# Loss Function Configuration
+loss:
+  detection:
+    type: CombinedLoss  # BCE + Dice
+    alpha: 0.7
+    beta: 0.3
+  angle:
+    type: CrossEntropyLoss
+    num_classes: 4  # 0, 90, 180, 270 degrees
+
+# Model Configuration
+model:
+  name: QRDetector
+  in_channels: 3
+  backbone: MobileNetV2
+  num_angle_classes: 4
+
+# Output Configuration
+output:
+  dir: runs/qrcode_detect
+  save_freq: 10
+  log_freq: 1
+
+# Dataset Configuration
+dataset:
+  name: QRCode Detection
+  num_classes: 1  # binary: qrcode or not
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1

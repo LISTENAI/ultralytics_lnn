@@ -1,0 +1,8 @@
+# Dog Face Detection Dataset
+path: /CodeRepo/Code/dwwang16/dataset/animal_detection/Oxford-IIIT_Pet_Dataset/dog_face
+train: train/images
+val: val/images
+
+nc: 1
+names:
+  0: dog

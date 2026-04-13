@@ -1,0 +1,36 @@
+# 数据集配置
+
+# BDD100K 数据集
+bdd100k:
+  name: BDD100K Segmentation
+  url: https://dl.cvlibs.net/datasets/bdd100k/seg/bdd100k_seg_val.zip
+  classes:
+    - road
+    - sky
+    - building
+    - wall
+    - fence
+    - vegetation
+    - car
+    - truck
+    - bus
+    - train
+    - motorcycle
+    - bicycle
+    - person
+    - rider
+    - traffic light
+    - traffic sign
+    - terrain
+
+# 简化的类别映射
+simple_classes:
+  0: background  # 其他
+  1: road        # 道路
+  2: obstacle    # 障碍物
+
+# 本地数据集路径
+local:
+  train_dir: /CodeRepo/Code/dwwang16/dataset/toy_car_road/images/val
+  mask_dir: /CodeRepo/Code/dwwang16/dataset/toy_car_road/masks/val
+  train_split: val  # 使用验证集作为训练集（数据量较小）

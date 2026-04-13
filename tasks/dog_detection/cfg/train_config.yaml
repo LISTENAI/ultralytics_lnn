@@ -1,0 +1,29 @@
+# Dog Face Detection Training Config
+# 狗脸检测训练配置文件
+
+# 训练参数
+epochs: 50          # 训练轮数
+imgsz: 320         # 输入图像尺寸
+batch: 32          # 批次大小
+device: 2          # GPU设备ID
+
+# 优化器参数
+lr: 0.01           # 初始学习率
+weight_decay: 0.0005
+momentum: 0.937
+
+# 训练选项
+workers: 8         # 数据加载线程数
+patience: 100      # 早停耐心值
+
+# 输出设置
+project: ./runs/detect
+name: dog_face_yolo26n_train_320
+
+# 量化训练选项
+quant: false        # 是否启用量化训练
+quant_stage: quant  # 量化阶段: both/constrain/quant
+
+# 数据集配置 (相对于 cfg 目录)
+dataset: dog.yaml
+model: yolo26n_dog.yaml

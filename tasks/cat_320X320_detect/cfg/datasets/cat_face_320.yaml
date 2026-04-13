@@ -1,0 +1,24 @@
+# Cat Face Detection Dataset Configuration (320x320)
+# Oxford-IIIT Pet Dataset - Cat subset
+# Modified for 320x320 input size
+
+# Dataset paths
+path: /CodeRepo/Code/dwwang16/dataset/animal_detection/Oxford-IIIT_Pet_Dataset/cat_face
+train: train/images
+val: val/images
+
+# Number of classes
+nc: 1
+
+# Class names
+names:
+  0: cat
+
+# Image settings
+img_size: 320
+
+# Notes
+# Training: 946 images
+# Validation: 235 images
+# Format: YOLO (normalized bbox)
+# Input size changed from 640 to 320 for faster training and inference

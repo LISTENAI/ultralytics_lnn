@@ -1,0 +1,47 @@
+# Text Detection, Segmentation and OCR Training Configuration
+
+# 训练配置
+training:
+  epochs: 50
+  batch_size: 8
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  seed: 42
+
+# 优化器配置
+optimizer:
+  type: AdamW
+  lr: 0.001
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+# 学习率调度
+scheduler:
+  type: CosineAnnealingLR
+  T_max: 50
+  eta_min: 1.0e-6
+
+# 图像配置
+image:
+  input_size: 640
+  rgb: true
+  normalize: true
+
+# 损失函数配置
+loss:
+  detector:
+    alpha: 0.7
+    type: CombinedLoss  # BCE + Dice
+  segmenter:
+    alpha: 0.5
+    type: SegmentationLoss  # BCE + Edge Loss
+  ocr:
+    type: CTCLoss
+    blank: 0
+    reduction: mean
+
+# 输出配置
+output:
+  dir: runs/text_ocr
+  save_freq: 10
+  log_freq: 1

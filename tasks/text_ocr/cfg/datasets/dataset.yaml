@@ -1,0 +1,69 @@
+# Text Detection Dataset Configuration
+
+# 数据集名称
+name: Text Detection Dataset
+
+# 数据集描述
+description: 文本检测、分割和OCR识别数据集
+
+# 数据集来源
+sources:
+  - name: ICDAR 2015
+    url: https://rrc.cvc.uab.es/?ch=4
+    task: Text Detection
+    languages: [English]
+  - name: ICDAR 2013
+    url: https://rrc.cvc.uab.es/?ch=2
+    task: Text Detection
+    languages: [English]
+  - name: SCUT-CTW1500
+    url: https://github.com/Yuliang-Liu/Curve-Text-Detector
+    task: Text Detection
+    languages: [Chinese, English]
+
+# 数据集统计
+statistics:
+  total_images: 3000
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+# 标注格式
+annotation:
+  format: COCO  # or YOLO
+  fields:
+    - text
+    - bbox
+    - language
+    - polygon
+
+# 支持的语言
+languages:
+  - Chinese
+  - English
+  - Numbers
+  - Symbols
+
+# 图像配置
+image:
+  max_width: 640
+  max_height: 640
+  channels: 3
+  color_space: RGB
+
+# 字符集
+character_set:
+  english: "0123456789abcdefghijklmnopqrstuvwxyz"
+  chinese: "的一是不了人我在有他这为之大来以个中上们"
+  punctuation: " .,!?;:+-*/%#$@()[]{}<>=\'\"\\|~^"
+
+# 数据增强
+augmentation:
+  enabled: true
+  methods:
+    - random_noise
+    - random_blur
+    - random_brightness
+    - random_contrast
+    - random_rotation
+    - random_crop

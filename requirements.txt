@@ -1,0 +1,38 @@
+# YOLO 量化训练部署项目依赖
+
+# 核心依赖
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Ultralytics YOLO
+ultralytics>=8.0.0
+
+# ONNX 相关
+onnx>=1.14.0
+onnxruntime-gpu>=1.15.0
+onnxoptimizer>=0.3.0
+
+# 数据处理
+numpy>=1.21.0
+Pillow>=9.0.0
+opencv-python>=4.7.0
+
+# 可视化
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# 工具库
+PyYAML>=6.0
+tqdm>=4.64.0
+
+# 第三方工具链（使用量化训练功能）
+# linger 和 thinker 放在 thirdparty 目录中
+# 自行更新和替换最新版本，请确保 thirdparty/linger 和 thirdparty/thinker 已正确安装
+
+# 开发工具
+ipython>=7.0.0
+jupyter>=1.0.0
+pytest>=7.0.0
+
+# VSCode 调试
+debugpy>=1.6.0

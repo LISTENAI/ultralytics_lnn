@@ -1,0 +1,50 @@
+# linger 量化配置文件 - VenusA 平台
+# 用于猫脸检测项目的量化训练
+
+# 平台设置
+platform: venusA
+
+# 设备配置
+device: cuda
+dtype: torch.float32
+
+# 量化开关
+open_quant: true
+
+# 量化方法
+quant_method: NATIVE
+
+# 随机种子
+seed: 42
+
+# 约束信息配置
+clamp_info:
+  clamp_activation_value: 8    # 激活约束到[-8, 8]
+  clamp_bias_value: null        # bias约束值，None表示不约束
+  clamp_factor_value: 7         # weight动态约束参数
+  clamp_weight_value: null       # weight静态约束值
+
+# 量化信息配置
+quant_info:
+  # 激活量化配置
+  activate_bits: 8              # 激活位宽，支持8bit, 16bit, 32bit
+  a_calibrate_name: top_10       # 激活校准方法
+  a_strategy: RANGE_MEAN         # 激活量化策略
+
+  # 权重量化配置
+  weight_bits: 8                 # 权重位宽，支持4bit, 8bit
+  w_calibrate_name: abs_max      # 权重校准方法
+  w_strategy: RANGE_MEAN         # 权重量化策略
+
+  # 偏置量化配置
+  bias_bits: 32                  # bias位宽，默认32bit
+
+  # 量化方法配置
+  is_symmetry: true              # 对称量化
+  is_perchannel: false           # per-channel量化开关
+  qat_method: MOM                # QAT量化方案
+  round_mode: floor_add          # 舍入方式
+  activation_type: none          # 激活类型
+
+# 跳过的模块 (根据模型结构调整)
+# disable_submodel: ["*9.m", "*gelu*", "*silu*"]
