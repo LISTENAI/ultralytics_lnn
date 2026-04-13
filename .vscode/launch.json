@@ -1,0 +1,164 @@
+{
+    // 使用 IntelliSense 了解相关属性。
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // ============================================================
+        // 猫脸检测任务 (320x320) - 参考示例
+        // ============================================================
+        {
+            "name": "Python: 训练 Cat Face 320x320 (FP32)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/cat_320X320_detect/train_cat_face_320.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--epochs", "5",
+                "--device", "2"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 训练 Cat Face 320x320 (量化约束)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/cat_320X320_detect/train_cat_face_320.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--quant",
+                "--quant-stage", "constrain",
+                "--epochs", "5",
+                "--device", "2"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 训练 Cat Face 320x320 (量化)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/cat_320X320_detect/train_cat_face_320.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--quant",
+                "--quant-stage", "quant",
+                "--epochs", "5",
+                "--device", "2"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 测试 Cat Face 320x320",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/cat_320X320_detect/test_cat_face_320.py",
+            "console": "integratedTerminal",
+            "args": [],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            },
+            "justMyCode": false
+        },
+
+        // ============================================================
+        // 通用工具脚本
+        // ============================================================
+        {
+            "name": "Python: 模型打包 - ONNX优化",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/pack_model.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--optimize-onnx",
+                "--model", "${workspaceFolder}/models/yolo26n.onnx"
+            ],
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 模型打包 - VenusA",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/pack_model.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--model", "${workspaceFolder}/models/yolo26n.onnx",
+                "--platform", "venusA"
+            ],
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 推理测试 - 图片",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/run_inference.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--model", "${workspaceFolder}/models/yolo26n.pt",
+                "--source", "${workspaceFolder}/../Oxford-IIIT_Pet_Dataset/cat_face/val/images",
+                "--imgsz", "320"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 推理测试 - 基准测试",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tasks/run_inference.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--model", "${workspaceFolder}/models/yolo26n.pt",
+                "--benchmark",
+                "--runs", "100"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 导出 ONNX 模型",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/export_onnx.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--model", "runs/detect/runs/detect/cat_face_yolo26n_train_3202/weights/best.pt",
+                "--img-size", "320",
+                "--opset", "12"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 环境检查",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/check_quant_env.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: 当前文件 (调试)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+*.pt
+*.pth
+*.onnx
+dataset/
+runs/
+tmp/
+output/
+models/
+# thirdparty/
+bdd100k_results/
+bdd100k_results_real/

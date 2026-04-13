@@ -1,0 +1,32 @@
+{
+  "name": "new_task",
+  "description": "新建任务指南 - 创建检测、识别、分割任务的完整流程",
+  "version": "1.0.0",
+  "author": "LNN Team",
+  "tags": ["task", "detection", "recognition", "segmentation", "guide"],
+  "skills": ["python", "yaml"],
+  "keywords": ["new task", "detection", "recognition", "segmentation", "yolo", "training"],
+  "task_types": ["detection", "recognition", "segmentation"],
+  "features": [
+    "任务目录创建",
+    "配置文件模板",
+    "训练脚本适配",
+    "VSCode调试配置",
+    "量化训练集成"
+  ],
+  "usage": {
+    "create_task": "参考本指南创建新的任务目录和配置文件",
+    "copy_template": "复制 tasks/cat_320X320_detect 作为模板",
+    "modify_config": "修改 cfg/train_config.yaml 中的参数",
+    "run_training": "python tasks/<task_name>/train_<task>.py"
+  },
+  "docs": {
+    "README": ".claude/skills/new_task/README.md",
+    "template": "tasks/cat_320X320_detect/"
+  },
+  "code_examples": {
+    "detection": "目标检测任务配置",
+    "recognition": "图像识别任务配置",
+    "segmentation": "图像分割任务配置"
+  }
+}

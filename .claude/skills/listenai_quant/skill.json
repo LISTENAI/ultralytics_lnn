@@ -1,0 +1,39 @@
+{
+  "name": "listenai_quant",
+  "description": "聆思科技量化训练与部署工具链 - linger 量化训练 + thinker 推理打包",
+  "version": "1.1.0",
+  "author": "LISTENAI",
+  "tags": ["quantization", "deployment", "AIOT", "venusA", "venus", "arcs", "NPU", "算子限制"],
+  "skills": ["python"],
+  "keywords": ["listenai", "linger", "thinker", "quantization", "QAT", "model deployment", "NPU ops"],
+  "platforms": ["venusA", "venus", "arcs", "CSK60xx"],
+  "features": [
+    "QAT量化训练",
+    "模型打包",
+    "内存分析",
+    "推理部署",
+    "NPU算子限制说明"
+  ],
+  "dependencies_download": {
+    "command": "python thirdparty/download_thirdparty.py",
+    "manual": "git clone https://github.com/LISTENAI/linger.git thirdparty/linger && git clone https://github.com/LISTENAI/thinker.git thirdparty/thinker"
+  },
+  "usage": {
+    "download_deps": "python thirdparty/download_thirdparty.py",
+    "train": "python tasks/<task_dir>/train_<task_name>.py",
+    "test": "python tasks/<task_dir>/test_<task_name>.py",
+    "pack": "python tasks/pack_model.py --model model.onnx --platform venusA"
+  },
+  "docs": {
+    "README": ".claude/skills/listenai_quant/README.md",
+    "examples": ".claude/skills/listenai_quant/examples.md",
+    "npu_limits": ".claude/skills/listenai_quant/npu_limits.md",
+    "linger_install": ".claude/skills/listenai_quant/linger_install.md",
+    "thirdparty": "thirdparty/README.md"
+  },
+  "code_examples": {
+    "constrain": "在浮点训练阶段添加约束",
+    "init": "量化训练阶段初始化量化模型",
+    "export": "导出量化ONNX模型"
+  }
+}
