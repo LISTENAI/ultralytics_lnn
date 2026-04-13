@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*$py.class
+# *$py.class
 
 
 *.pt
@@ -13,5 +13,3 @@ tmp/
 output/
 models/
 # thirdparty/
-bdd100k_results/
-bdd100k_results_real/
